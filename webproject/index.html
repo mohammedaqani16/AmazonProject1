@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T-Levels | The next level qualification</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+    :root { --blue: #232f3e; --orange: #ff9900; --ink: #18212b; --paper: #f5f7f8; --white: #fff; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.55; }
+    .skip-link { position: absolute; left: -999px; top: 12px; z-index: 10; background: var(--orange); padding: 10px 16px; color: var(--blue); font-weight: 700; }
+    .skip-link:focus { left: 12px; }
+    .topbar { background: var(--blue); color: var(--white); padding: 22px 6vw 18px; position: relative; }
+    .topbar-inner, .content { max-width: 1180px; margin: 0 auto; }
+    .small-brand { color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 4.44rem; font-style: italic; font-weight: 700; position: absolute; right: 6vw; text-decoration: none; top: 8px; }
+    .small-brand span { color: var(--orange); }
+    .brand-lockup { align-items: center; display: inline-flex; left: 6vw; position: absolute; top: 50px; }
+    .brand { color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 2.6rem; font-style: italic; font-weight: 700; letter-spacing: -1px; text-decoration: none; }
+    .brand span { color: var(--orange); }
+    .amazon-logo { height: 68px; image-rendering: auto; object-fit: cover; object-position: center; width: 240px; }
+    nav { border-top: 1px solid rgba(255,255,255,.25); margin-top: 114px; padding-top: 14px; }
+    nav ul { display: flex; flex-wrap: wrap; gap: 22px; list-style: none; margin: 0; padding: 0; }
+    nav a { color: var(--white); font-size: .78rem; font-weight: 700; text-decoration: none; text-transform: uppercase; }
+    nav a:hover, nav a:focus { color: var(--orange); }
+    .hero { background: var(--blue); color: var(--white); padding: 58px 6vw 68px; }
+    .hero-grid { align-items: center; display: grid; gap: 46px; grid-template-columns: 1.2fr .8fr; margin: 0 auto; max-width: 1180px; }
+    .eyebrow { color: var(--orange); font-size: .78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    h1, h2 { font-family: 'Barlow Condensed', sans-serif; line-height: .95; margin: 12px 0 18px; text-transform: uppercase; }
+    h1 { font-size: clamp(3.6rem, 8vw, 7rem); letter-spacing: -2px; }
+    h2 { color: var(--blue); font-size: 3rem; }
+    .hero p { color: #e2e7eb; font-size: 1.15rem; max-width: 650px; }
+    .button { background: var(--orange); border: 2px solid var(--orange); color: var(--blue); display: inline-block; font-weight: 700; margin-top: 12px; padding: 12px 20px; text-decoration: none; }
+    .button:hover, .button:focus { background: var(--white); border-color: var(--white); }
+    .hero-mark { border: 2px solid var(--orange); color: var(--orange); font-family: 'Barlow Condensed', sans-serif; font-size: 5rem; font-style: italic; line-height: .8; padding: 32px 20px; text-align: center; transform: rotate(-4deg); }
+    .hero-mark small { display: block; font-family: 'DM Sans', sans-serif; font-size: .65rem; font-style: normal; letter-spacing: 1px; margin-top: 18px; }
+    .content { padding: 62px 6vw; }
+    .intro { display: grid; gap: 42px; grid-template-columns: 1fr 1fr; }
+    .intro p { font-size: 1.1rem; margin-top: 0; }
+    .video { aspect-ratio: 16 / 9; border: 0; width: 100%; }
+    .section-label { color: var(--orange); font-size: .8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    .banners { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); margin-top: 44px; }
+    .banner { background: var(--blue); color: var(--white); min-height: 190px; padding: 24px; position: relative; }
+    .banner:nth-child(2) { background: var(--orange); color: var(--blue); }
+    .banner:nth-child(3) { background: #dce3e8; color: var(--blue); }
+    .banner h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; line-height: 1; margin: 0 0 10px; text-transform: uppercase; }
+    .banner a { color: inherit; font-weight: 700; }
+    .stories { border-top: 2px solid var(--blue); margin-top: 58px; padding-top: 42px; }
+    .story-tools { align-items: center; display: flex; gap: 12px; justify-content: space-between; margin: 24px 0 18px; }
+    .story-tools label { font-weight: 700; }
+    .story-tools select { border: 1px solid var(--blue); font: inherit; padding: 9px 12px; }
+    .story-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+    .story-card { background: var(--white); border: 1px solid #c6cdd2; padding: 16px; }
+    .story-card[hidden] { display: none; }
+    .video-placeholder { align-items: center; background: var(--blue); color: var(--white); display: flex; flex-direction: column; justify-content: center; min-height: 130px; text-align: center; }
+    .video-placeholder strong { border: 2px solid var(--orange); border-radius: 50%; color: var(--orange); font-size: 1.4rem; line-height: 34px; margin-bottom: 8px; width: 38px; }
+    .story-card h3 { color: var(--blue); font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; line-height: 1; margin: 16px 0 6px; text-transform: uppercase; }
+    .story-card p { margin: 8px 0 0; }
+    footer { background: var(--blue); color: var(--white); padding: 28px 6vw; }
+    footer .content { padding: 0; }
+    .accessibility { bottom: 20px; left: 20px; position: fixed; z-index: 3; }
+    .accessibility button, .ai-button, .ai-send { background: var(--orange); border: 2px solid var(--blue); color: var(--blue); cursor: pointer; font: 700 .9rem 'DM Sans', sans-serif; padding: 10px 14px; }
+    .access-panel { background: var(--white); border: 2px solid var(--blue); display: none; margin-bottom: 8px; padding: 14px; width: 220px; }
+    .access-panel.open { display: block; }
+    .access-panel button { background: var(--white); border: 1px solid var(--blue); cursor: pointer; display: block; margin-top: 8px; padding: 7px 10px; width: 100%; }
+    .high-contrast { --paper: #000; --ink: #fff; --blue: #000; --white: #fff; --orange: #ffb000; }
+    .high-contrast .content, .high-contrast footer, .high-contrast .topbar, .high-contrast .hero { background: #000; }
+    .high-contrast h2, .high-contrast .story-card h3 { color: #fff; }
+    .high-contrast .banner, .high-contrast .story-card, .high-contrast .form-wrap { border: 2px solid #fff; }
+    .large-text { font-size: 135%; line-height: 1.65; }
+    .ai-button { bottom: 20px; position: fixed; right: 20px; z-index: 3; }
+    .ai-panel { background: var(--white); border: 2px solid var(--blue); bottom: 70px; display: none; padding: 16px; position: fixed; right: 20px; width: min(330px, calc(100vw - 40px)); z-index: 3; }
+    .ai-panel.open { display: block; }
+    .ai-messages { font-size: .9rem; max-height: 180px; overflow-y: auto; }
+    .ai-input { border: 1px solid var(--blue); padding: 9px; width: 68%; }
+    @media (max-width: 760px) { .hero-grid, .intro, .story-grid { grid-template-columns: 1fr; } .hero-mark { max-width: 300px; } .banners { grid-template-columns: 1fr; } .story-tools { align-items: flex-start; flex-direction: column; } nav { margin-top: 96px; } nav ul { gap: 12px; } .brand-lockup { top: 44px; } .amazon-logo { height: 56px; width: 195px; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="small-brand" href="index.html">T<span>·</span>LEVELS</a><div class="brand-lockup"><img class="amazon-logo" src="https://enterpriseviewpoint.com/wp-content/uploads/2021/11/amazon-logo-1.png" alt="Amazon logo"></div>
+      <nav aria-label="Main navigation"><ul>
+        <li><a href="index.html">Home</a></li><li><a href="#about">About T Levels</a></li><li><a href="page4.html">T Level subjects</a></li><li><a href="#stories">Student stories</a></li><li><a href="page3.html">Resources for parents</a></li><li><a href="page2.html">Find a T Level</a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero"><div class="hero-grid"><div><div class="eyebrow">A qualification built for the real world</div><h1>Take your next step.</h1><p>T Levels are high-quality technical qualifications designed with employers. Learn what you love, build practical skills and get ready for your future.</p><a class="button" href="page2.html">Find your T Level</a></div><div class="hero-mark">T<br>LEVELS<small>THE NEXT LEVEL QUALIFICATION</small></div></div></section>
+    <section class="content" id="about"><div class="intro"><div><div class="section-label">Start here</div><h2>Make your mark</h2><p>T Levels combine classroom learning with an industry placement, giving you the knowledge and experience to move into skilled work, an apprenticeship or higher education.</p><p>They are the next level after GCSEs: a two-year programme created with businesses and industry experts.</p><a class="button" href="page4.html">Explore subjects</a></div><div><iframe class="video" src="https://www.youtube.com/embed/hR9W3qELTn4" title="Learn more about T Levels" allowfullscreen></iframe></div></div>
+      <div class="banners"><article class="banner"><h3>Learn by doing</h3><p>Put your skills into practice with an industry placement.</p><a href="page4.html">See subjects &rarr;</a></article><article class="banner"><h3>Find your future</h3><p>Discover the route that matches your interests and ambitions.</p><a href="page2.html">Find a T Level &rarr;</a></article><article class="banner"><h3>Hear from students</h3><p>Get a feel for life on a T Level and where it can take you.</p><a href="https://www.youtube.com/watch?v=hR9W3qELTn4">Watch the video &rarr;</a></article></div>
+      <section class="stories" id="stories"><div class="section-label">Student stories</div><h2>Hear from the next level</h2><div class="story-tools"><label for="storyFilter">Filter stories</label><select id="storyFilter"><option value="all">All stories</option><option value="digital">Digital</option><option value="health">Health</option><option value="construction">Construction</option></select></div><div class="story-grid" id="storyGrid"><article class="story-card" data-category="digital"><iframe class="video" src="https://www.youtube.com/embed/hR9W3qELTn4" title="Amira's digital journey" allowfullscreen></iframe><h3>Amira's digital journey</h3><p>Amira shares how her T Level helped her build confidence in coding and design.</p></article><article class="story-card" data-category="health"><iframe class="video" src="https://www.youtube.com/embed/MDnuccH9Vy8" title="Joe's first placement" allowfullscreen></iframe><h3>Joe's first placement</h3><p>Joe talks about learning practical care skills and meeting patients on placement.</p></article><article class="story-card" data-category="construction"><iframe class="video" src="https://www.youtube.com/embed/ZuzWjKSqjk8" title="Leo builds his future" allowfullscreen></iframe><h3>Leo builds his future</h3><p>Leo explains how construction projects turned his interest into a career plan.</p></article></div></section>
+    </section>
+  </main>
+  <footer><div class="content"><strong>T-LEVELS</strong><br>The next level qualification.</div></footer>
+  <div class="accessibility"><div class="access-panel" id="accessPanel"><strong>Accessibility</strong><button id="contrastToggle" type="button">Toggle high contrast</button><button id="textToggle" type="button">Toggle text magnification</button></div><button id="accessButton" type="button" aria-expanded="false">Accessibility</button></div>
+  <section class="ai-panel" id="aiPanel" aria-label="Website assistant"><strong>Website assistant</strong><div class="ai-messages" id="aiMessages"><p>Ask me about T Levels, subjects, placements or finding your course.</p></div><input class="ai-input" id="aiInput" type="text" placeholder="Ask a question" aria-label="Ask a question"><button class="ai-send" id="aiSend" type="button">Send</button></section><button class="ai-button" id="aiButton" type="button" aria-expanded="false" aria-controls="aiPanel">Ask the assistant</button>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    $('accessButton').addEventListener('click', () => { const open = $('accessPanel').classList.toggle('open'); $('accessButton').setAttribute('aria-expanded', open); });
+    $('contrastToggle').addEventListener('click', () => document.body.classList.toggle('high-contrast'));
+    $('textToggle').addEventListener('click', () => document.body.classList.toggle('large-text'));
+    $('aiButton').addEventListener('click', () => { const open = $('aiPanel').classList.toggle('open'); $('aiButton').setAttribute('aria-expanded', open); if (open) $('aiInput').focus(); });
+    function localAnswer(question) { if (/subject|course|digital|construction|health/i.test(question)) return 'Visit the T Level subjects page to compare Digital, Construction and Health courses, plus apprenticeship routes.'; if (/placement|work|apprenticeship|job/i.test(question)) return 'T Levels combine classroom learning with a meaningful industry placement and can lead to skilled work, an apprenticeship or further study.'; if (/parent|family|support/i.test(question)) return 'The resources for parents page explains T Levels, questions to ask and where to get more help.'; if (/find|apply|interest|register/i.test(question)) return 'Use the Find a T Level page to register your interest and explore subjects, providers and opportunities.'; if (/accessib|contrast|text|large/i.test(question)) return 'Use the Accessibility button at the bottom-left to toggle high contrast or larger text.'; if (/about|what is|t level|qualification/i.test(question)) return 'T Levels are two-year technical qualifications created with employers. They combine classroom study with practical industry experience.'; return 'I can help you explore this website. Ask me about T Levels, subjects, placements, parents resources, accessibility or finding a course.'; }
+    function answerQuestion() { const input = $('aiInput'); const question = input.value.trim(); if (!question) return; const message = document.createElement('p'); message.textContent = `You: ${question}`; $('aiMessages').appendChild(message); const answer = document.createElement('p'); answer.textContent = localAnswer(question); $('aiMessages').appendChild(answer); input.value = ''; }
+    $('aiSend').addEventListener('click', answerQuestion); $('aiInput').addEventListener('keydown', (event) => { if (event.key === 'Enter') answerQuestion(); });
+    $('storyFilter').addEventListener('change', (event) => { document.querySelectorAll('.story-card').forEach((card) => { card.hidden = event.target.value !== 'all' && card.dataset.category !== event.target.value; }); });
+  </script>
+</body>
+</html>
